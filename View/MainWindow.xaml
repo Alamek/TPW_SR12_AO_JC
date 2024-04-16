@@ -22,7 +22,7 @@
         <Border
             Margin="112,28,108,294"
             BorderBrush="Black"
-            BorderThickness="1">
+            BorderThickness="2">
             <Canvas
                 x:Name="Granice"
                 Width="952"
@@ -55,9 +55,9 @@
             FontSize="36">
             <Button.CommandParameter>
                 <viewModel:MyCommandParameters
-                    canvas="{x:Reference Name=Granice}"
-                    numberOfCirclesTextbox="{x:Reference Name=Ilosc}"
-                    radiusTextbox="{x:Reference Name=Radius}" />
+                    Canvas="{x:Reference Name=Granice}"
+                    NumberOfCirclesTextbox="{x:Reference Name=Ilosc}"
+                    RadiusTextbox="{x:Reference Name=Radius}" />
             </Button.CommandParameter>
 
         </Button>

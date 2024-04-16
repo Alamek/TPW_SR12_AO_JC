@@ -1,25 +1,29 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Diagnostics;
 using System.Windows.Controls;
 using System.Windows.Shapes;
 
 namespace TestyJednostkowe {
     [TestClass]
-    public class UnitTest1 {
+    public class Testy {
         [TestMethod]
         public void TestMethod1() {
-            Ellipse circle = new Ellipse();
-
-            circle.Width = 2;
-            circle.Height = 2;
+            Ellipse circle = new Ellipse
+            {
+                Width = 2,
+                Height = 2
+            };
             Assert.AreEqual(circle.Width, 2);
             Assert.AreEqual(circle.Height, 2);
         }
         [TestMethod]
-        public void TestMethod2() {
-            Canvas canvas = new Canvas();
-            Logika.Controller.spawnCircles(5, canvas);
+        public void SpawnCircle() {
+            Canvas canvas = new Canvas
+            {
+                Width = 900,
+                Height = 900
+            };
+            Logika.Logic.CreateCircles(canvas, 5, 5);
             Process currentProcess2 = Process.GetCurrentProcess();
             int threadCount2 = currentProcess2.Threads.Count;
             Debug.WriteLine(threadCount2);
@@ -27,7 +31,7 @@ namespace TestyJednostkowe {
         }
 
         [TestMethod]
-        public void TestMethod3() {
+        public void CircleList() {
             Dane.CircleList list = new Dane.CircleList();
             Dane.Circle circle1 = new Dane.Circle(5, 5, 5, 5, 10, 1);
             list.AddCircle(circle1);
@@ -38,7 +42,7 @@ namespace TestyJednostkowe {
         }
 
         [TestMethod]
-        public void TestMethod4() {
+        public void Circle() {
             Dane.Circle circle1 = new Dane.Circle(5, 5, 5, 5, 10, 1);
             Assert.AreEqual(circle1.X, 5);
             Assert.AreEqual(circle1.Y, 5);  

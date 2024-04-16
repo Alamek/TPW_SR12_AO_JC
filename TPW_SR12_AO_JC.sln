@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dane", "Dane\Dane.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logika", "Logika\Logika.csproj", "{30044CF2-C982-4ED4-820C-4F7BA0E7687D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestyJednostkowe", "TestyJednostkowe\TestyJednostkowe.csproj", "{77C3A6D5-4553-4984-A438-CE7417DC7FC8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testy", "Testy\Testy.csproj", "{77C3A6D5-4553-4984-A438-CE7417DC7FC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

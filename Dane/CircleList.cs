@@ -2,7 +2,7 @@
 
 namespace Dane {
     public class CircleList {
-        private List<Circle> circles;
+        private readonly List<Circle> circles;
 
         public CircleList() {
             circles = new List<Circle>();

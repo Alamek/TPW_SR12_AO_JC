@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,7 +15,7 @@ namespace Logika
 
         public static CircleList circleList = new CircleList();
 
-        public static void spawnCircles(int value, Canvas canvas, int radius) 
+        public static void CreateCircles(Canvas canvas,int value, int radius) 
         {
             if (radius == 0)
             {
@@ -40,16 +35,16 @@ namespace Logika
 
             for (int i = 0; i < value; i++) 
             {
-                spawnCircle(canvas, radius, radius);
+                CreateCircle(canvas, radius, radius);
             }
         }
 
-        public static void spawnCircle(Canvas canvas, int size, int radius) 
+        public static void CreateCircle(Canvas canvas, int size, int radius)
         {
             Random r = new Random(Guid.NewGuid().GetHashCode());
 
-            int x = r.Next(80, (int)canvas.ActualWidth) - 20;
-            int y = r.Next(80, (int)canvas.ActualHeight) - 20;
+            int x = r.Next(80, (int)canvas.Width - 20);
+            int y = r.Next(80, (int)canvas.Height - 20);
             double speed = 0;
 
 
@@ -62,10 +57,12 @@ namespace Logika
             Circle circleObject = new Circle(x, y, size, radius, speed, 1);
             Random randomc = new Random();
             Color color = Color.FromRgb((byte)randomc.Next(256), (byte)randomc.Next(256), (byte)randomc.Next(256));
-            Ellipse circle = new Ellipse();
-            circle.Width = radius;
-            circle.Height = radius;
-            circle.Fill = new SolidColorBrush(color);
+            Ellipse circle = new Ellipse
+            {
+                Width = radius,
+                Height = radius,
+                Fill = new SolidColorBrush(color)
+            };
 
             Canvas.SetLeft(circle, x - radius);
             Canvas.SetTop(circle, y - radius);
@@ -109,7 +106,7 @@ namespace Logika
             task.Start();
 
         }
-        static void Main(string[] args)
+        static void Main()
         {
 
         }

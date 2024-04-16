@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Dane
 {
@@ -33,11 +30,9 @@ namespace Dane
 
             while (DirectionX == 0 && DirectionY == 0) {
                 Random random = new Random();
-                DirectionX = random.NextDouble();// * 2.0 - 1.0;
-                DirectionY = random.NextDouble();// * 2.0 - 1.0;
+                DirectionX = random.NextDouble();
+                DirectionY = random.NextDouble();
             }
-
-            Console.WriteLine("dir X: " + DirectionX + "dir Y: " + DirectionY + "Speed: " + speed);
 
             DirectionX *= speed/mass; 
             DirectionY *= speed/mass;
@@ -47,7 +42,7 @@ namespace Dane
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        static void Main(string[] args) {
+        static void Main() {
 
         }
     }

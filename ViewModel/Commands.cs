@@ -1,16 +1,8 @@
 ﻿using Model;
 using System;
-using System.Collections.Generic;
-using System.Data.Common;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace ViewModel
 {
@@ -22,7 +14,7 @@ namespace ViewModel
         public Commands()
         {
             Parameters = new MyCommandParameters();
-            ClickSpawnButonCommand = new RelayCommand(OnClickSpawnButton, CanSpawn);
+            ClickSpawnButonCommand = new RelayCommand(OnClickSpawnButton, CanCreate);
             Debug.WriteLine("zinicjalizowano commands");
         }
 
@@ -30,32 +22,31 @@ namespace ViewModel
         {
             var parameters = parameter as MyCommandParameters;
 
-            Canvas canvas = parameters.canvas;
-            TextBox textBox = parameters.numberOfCirclesTextbox;
-            TextBox textBox2 = parameters.radiusTextbox;
+            Canvas canvas = parameters.Canvas;
+            TextBox textBox = parameters.NumberOfCirclesTextbox;
+            TextBox textBox2 = parameters.RadiusTextbox;
 
             int numberOfCircles = Convert.ToInt32(textBox.Text);
             int radius = Convert.ToInt32(textBox2.Text);
             
-            Controller.spawnCircles(numberOfCircles, canvas, radius);
+            Controller.CreateCircles(canvas, numberOfCircles, radius);
         }
 
-        public bool CanSpawn(object parameter)
+        public bool CanCreate(object parameter)
         {
-            var parameters = parameter as MyCommandParameters;
-            if (parameters == null)
+            if (!(parameter is MyCommandParameters parameters))
             {
                 return false;
             }
 
-            var canvas = parameters.canvas;
-            TextBox textBox = parameters.numberOfCirclesTextbox;
-            TextBox textBox2 = parameters.radiusTextbox;
+            var canvas = parameters.Canvas;
+            TextBox textBox = parameters.NumberOfCirclesTextbox;
+            TextBox textBox2 = parameters.RadiusTextbox;
 
             int numberOfCircles = Convert.ToInt32(textBox.Text);
             int radius = Convert.ToInt32(textBox2.Text);
             
-            Controller.spawnCircles(numberOfCircles, canvas, radius);
+            Controller.CreateCircles(canvas, numberOfCircles, radius);
 
             if (parameters == null)
             {
@@ -73,7 +64,7 @@ namespace ViewModel
             
         }
 
-        static void Main(string[] args)
+        static void Main()
         {
 
         }

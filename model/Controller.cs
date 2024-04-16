@@ -1,20 +1,16 @@
-﻿using System;
-using Logika;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using Logika;
 using System.Windows.Controls;
 
 namespace Model
 {
     public class Controller
     {
-        public static void spawnCircles(int value, Canvas canvas, int radius)
+        public static void CreateCircles(Canvas canvas, int value, int radius)
         {
-            Logic.spawnCircles(value, canvas, radius);
+            Logic.CreateCircles(canvas, value, radius);
         }
 
-        static void Main(string[] args)
+        static void Main()
         {
 
         }
