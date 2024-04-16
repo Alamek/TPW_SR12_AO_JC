@@ -1,0 +1,92 @@
+﻿<Window
+    x:Class="View.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="clr-namespace:ViewModel;assembly=ViewModel"
+    Title="MainWindow"
+    Width="1290"
+    Height="740"
+    mc:Ignorable="d">
+
+    <Window.Resources>
+        <viewModel:Commands x:Key="Commands" />
+    </Window.Resources>
+
+    <Grid
+        Width="1172"
+        Margin="0,10,0,70"
+        HorizontalAlignment="Center">
+        <Border
+            Margin="112,28,108,294"
+            BorderBrush="Black"
+            BorderThickness="1">
+            <Canvas
+                x:Name="Granice"
+                Width="952"
+                Height="302"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" />
+        </Border>
+        <TextBox
+            x:Name="Ilosc"
+            Width="158"
+            Height="46"
+            Margin="509,497,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="34"
+            Text="1"
+            TextAlignment="Center"
+            TextChanged="Ilosc_TextChanged"
+            TextWrapping="Wrap" />
+        <Button
+            Width="158"
+            Height="122"
+            Margin="296,436,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="Button_Click"
+            Command="{Binding ClickSpawnButonCommand}"
+            Content="SPAWN"
+            DataContext="{StaticResource Commands}"
+            FontSize="36">
+            <Button.CommandParameter>
+                <viewModel:MyCommandParameters
+                    canvas="{x:Reference Name=Granice}"
+                    numberOfCirclesTextbox="{x:Reference Name=Ilosc}"
+                    radiusTextbox="{x:Reference Name=Radius}" />
+            </Button.CommandParameter>
+
+        </Button>
+        <TextBox
+            x:Name="Radius"
+            Width="158"
+            Height="46"
+            Margin="712,497,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="34"
+            Text="20"
+            TextAlignment="Center"
+            TextChanged="Radius_TextChanged"
+            TextWrapping="Wrap" />
+        <TextBlock
+            Margin="554,437,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="34"
+            Text="Ilość"
+            TextAlignment="Center" />
+        <TextBlock
+            Margin="728,437,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontSize="34"
+            Text="Promień"
+            TextAlignment="Center" />
+
+    </Grid>
+</Window>
