@@ -70,39 +70,53 @@ namespace Logika
             canvas.Children.Add(circle);
 
             circleList.AddCircle(circleObject);
-            Task task = new Task( () => 
+            Task task = new Task(() =>
             {
-                while (true) {
+                while (true)
+                {
                     var dispatcher = Application.Current.Dispatcher;
+                  
                     dispatcher.Invoke(() =>
                     {
 
                         double left = Canvas.GetLeft(circle);
                         double top = Canvas.GetTop(circle);
 
-                        if (left + circle.Width >= canvas.ActualWidth) {
-                            circleObject.DirectionX = -circleObject.DirectionX;
+                        
+                        if (left + circle.Width >= canvas.Width)
+                        {
+                            circleObject.dirX = -circleObject.dirX;
                         }
-                        else if (left <= 0) {
-                            circleObject.DirectionX = -circleObject.DirectionX;
-                        }
-
-                        if (top + circle.Height >= canvas.ActualHeight) {
-                            circleObject.DirectionY = -circleObject.DirectionY;
-                        }
-                        else if (top <= 0) {
-                            circleObject.DirectionY = -circleObject.DirectionY;
+                        else if (left <= 0)
+                        {
+                            circleObject.dirX = -circleObject.dirX;
                         }
 
-                        circleObject.X += circleObject.DirectionX;
-                        circleObject.Y += circleObject.DirectionY;
+                        if (top + circle.Height >= canvas.Height)
+                        {
+                            circleObject.dirY = -circleObject.dirY;
+                        }
+                        else if (top <= 0)
+                        {
+                            circleObject.dirY = -circleObject.dirY;
+                        }
+
+                       
+                        
+                        
+                        
+                        circleObject.X += circleObject.dirX;
+                        circleObject.Y += circleObject.dirY;
 
                         Canvas.SetLeft(circle, circleObject.X - circleObject.Radius);
                         Canvas.SetTop(circle, circleObject.Y - circleObject.Radius);
                     });
                     Thread.Sleep(1);
                 }
-            });
+            })
+            {
+
+            };
             task.Start();
 
         }
