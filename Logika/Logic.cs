@@ -103,8 +103,6 @@ namespace Logika
                             circleObject.dirY = -circleObject.dirY;
                         }
 
-                       
-                        
                         
                         
                         circleObject.X += circleObject.dirX;
@@ -123,39 +121,38 @@ namespace Logika
                                 double dy = circleObject.Y - otherCircle.Y;
                                 double distance = Math.Sqrt(dx * dx + dy * dy);
 
-                                // Jeśli odległość między środkami okręgów jest mniejsza niż suma ich promieni,
-                                // to mamy kolizję
+
                                 if (distance < (circleObject.Radius + otherCircle.Radius))
                                 {
-                                    // Obliczanie normalnej do wektora między środkami kul
+                                    
                                     double normalX = dx / distance;
                                     double normalY = dy / distance;
 
-                                    // Obliczanie względnych prędkości
+                                    
                                     double velocityX = circleObject.dirX - otherCircle.dirX;
                                     double velocityY = circleObject.dirY - otherCircle.dirY;
 
-                                    // Obliczanie składowej prędkości wzdłuż normalnej
+                                 
                                     double velocityAlongNormal = velocityX * normalX + velocityY * normalY;
 
-                                    // Sprawdzamy, czy kulki się oddalają (unikamy ich ponownego odbicia)
+                                  
                                     if (velocityAlongNormal > 0)
                                     {
                                         break;
                                     }
 
-                                    // Obliczanie zmiany prędkości po zderzeniu
-                                    double e = 1; // Współczynnik restytucji (może być dostosowany)
+                        
+                                    double e = 1; 
                                     double j = -(1 + e) * velocityAlongNormal;
                                     j /= (1 / circleObject.Mass + 1 / otherCircle.Mass);
 
-                                    // Aktualizacja prędkości obu kulek
+                                 
                                     circleObject.dirX -= -j * normalX / circleObject.Mass;
                                     circleObject.dirY -= -j * normalY / circleObject.Mass;
                                     otherCircle.dirX += -j * normalX / otherCircle.Mass;
                                     otherCircle.dirY += -j * normalY / otherCircle.Mass;
 
-                                    double maxSpeed = 0.5; // Możesz dostosować maksymalną prędkość
+                                    double maxSpeed = 0.5; 
                                     double speed1 = Math.Sqrt(circleObject.dirX * circleObject.dirX + circleObject.dirY * circleObject.dirY);
                                     double speed2 = Math.Sqrt(otherCircle.dirX * otherCircle.dirX + otherCircle.dirY * otherCircle.dirY);
                                     if (speed1 > maxSpeed)
@@ -169,7 +166,7 @@ namespace Logika
                                         otherCircle.dirY *= maxSpeed / speed2;
                                     }
 
-                                    break; // Możemy przerwać pętlę, bo każda kula może kolidować tylko z jedną inną
+                                    break; 
                                 }
                             }
                         }
